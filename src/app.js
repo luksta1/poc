@@ -13,10 +13,10 @@ const App = () => {
       </header>
       <main>
         <RouteContainer>
-          <Route path="/app/echo/page-1" element={<Content pageId={1}/>} />
-          <Route path="/app/echo/page-2" element={<Content pageId={2}/>} />
-          <Route path="/app/echo/page-3" element={<Content pageId={3}/>} />
-          <Route path="/" element={<Navigate to="/app/echo/page-1" />} />
+          <Route path="/page-1" element={<Content pageId={1}/>} />
+          <Route path="/page-2" element={<Content pageId={2}/>} />
+          <Route path="/page-3" element={<Content pageId={3}/>} />
+          <Route path="/" element={<Navigate to="/page-1" />} />
         </RouteContainer>
       </main>
     </Router>
