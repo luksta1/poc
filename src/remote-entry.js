@@ -1,1 +1,5 @@
-export { default } from './app';
+console.log('**Remote entry is loading');
+
+import Module from './app';
+
+export default Module;
