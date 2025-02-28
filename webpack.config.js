@@ -10,9 +10,7 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   entry: isDev ? './src/index.js' : undefined,
   output: {
-    filename: isDev ? 'bundle.js' : undefined,
-    path: __dirname + '/dist',
-    publicPath: '/',
+    publicPath: 'https://golden-gelato-35f8d3.netlify.app/',
   },
   optimization: {
     minimize: true,
@@ -23,7 +21,7 @@ module.exports = {
       name: 'echo',
       filename: 'remoteEntry.js',
       exposes: {
-        './Module': './src/remote-entry.js',
+        './Module': './src/app.js',
       },
       library: { 
         name: 'echo',

@@ -5,7 +5,7 @@ import './styles.css'
 
 const history = window?.shared_history || null;
 
-const App = () => {
+const Module = () => {
   return (
     <Router history={history}>
       <header>
@@ -23,4 +23,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Module;
