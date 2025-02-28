@@ -10,6 +10,10 @@ module.exports = {
     filename: 'bundle.js',
     path:path.resolve(__dirname, "dist"),
     publicPath: '/',
+    library: {
+      type: 'var',
+      name: 'echo',
+    },
   },
   optimization: {
     minimize: true,
