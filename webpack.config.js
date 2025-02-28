@@ -4,16 +4,15 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 
+const isDev = process.env.NODE_ENV === 'development';
+
 module.exports = {
-  mode: 'production',
+  mode: isDev ? 'development' : 'production',
+  entry: isDev ? './src/index.js' : undefined,
   output: {
-    filename: 'bundle.js',
-    path:path.resolve(__dirname, "dist"),
+    filename: isDev ? 'bundle.js' : undefined,
+    path: __dirname + '/dist',
     publicPath: '/',
-    library: {
-      type: 'var',
-      name: 'echo',
-    },
   },
   optimization: {
     minimize: true,
@@ -25,6 +24,10 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './Module': './src/remote-entry.js',
+      },
+      library: { 
+        name: 'echo',
+        type: 'window'
       },
       shared: {},
     }),
