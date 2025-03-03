@@ -21,7 +21,7 @@ module.exports = {
       name: 'echo',
       filename: 'remoteEntry.js',
       exposes: {
-        './Module': './src/app.js',
+        './Module': './src/remote-entry.js',
       },
       library: { 
         name: 'echo',

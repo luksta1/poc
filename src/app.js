@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes as RouteContainer, Navigate } from 'react-router-dom';
+import { MemoryRouter as Router, Route, Routes as RouteContainer, Navigate } from 'react-router-dom';
 import { Content, Nav } from './components';
 import './styles.css'
 
 const history = window?.shared_history || null;
 
-const Module = () => {
+const App = () => {
   return (
     <Router history={history}>
       <header>
@@ -23,4 +23,4 @@ const Module = () => {
   );
 };
 
-export default Module;
+export default App;
