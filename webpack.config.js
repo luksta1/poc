@@ -57,6 +57,10 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  externals: {
+    react: 'React19', // Use a different global variable for React 18
+    'react-dom': 'ReactDOM19', // Same for ReactDOM
+  },
   devServer: {
     port: 3000,
   },
