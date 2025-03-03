@@ -27,7 +27,10 @@ module.exports = {
         name: 'echo',
         type: 'window'
       },
-      shared: {},
+      shared: {
+        react: { singleton: false, eager: true },  // Do not share React with the host
+        'react-dom': { singleton: false, eager: true },
+      },
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
