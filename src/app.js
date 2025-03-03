@@ -1,11 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes as RouteContainer, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes as RouteContainer, Navigate, useLocation } from 'react-router-dom';
 import { Content, Nav } from './components';
 import './styles.css'
 
-const history = window?.shared_history || null;
+const App = ({ onNavigate }) => {
+  const location = useLocation();
 
-const App = () => {
+  useEffect(() => {
+    onNavigate(location.pathname);
+  }, [location]);
+
   return (
     <Router history={history}>
       <header>
