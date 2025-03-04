@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { Route, Routes as RouteContainer, Navigate, redirect, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import { Route, Routes as RouteContainer, Navigate, useLocation } from 'react-router-dom';
 import { Content } from './components';
 
 export const Routes = ({ onNavigate, parentRoute }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (parentRoute && location.pathname !== parentRoute) redirect(parentRoute);
+    if (parentRoute && location.pathname !== parentRoute) navigate(parentRoute);
   }, []);
 
   useEffect(() => {
