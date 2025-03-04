@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
-import { Route, Routes as RouteContainer, Navigate, useLocation } from 'react-router-dom';
+import { Route, Routes as RouteContainer, Navigate, redirect, useLocation } from 'react-router-dom';
 import { Content } from './components';
 
-export const Routes = ({ onNavigate }) => {
+export const Routes = ({ onNavigate, parentRoute }) => {
   const location = useLocation();
+
+  useEffect(() => {
+    if (parentRoute && location.pathname !== parentRoute) redirect(parentRoute);
+  }, []);
 
   useEffect(() => {
     if (location.pathname !== '/') onNavigate(location.pathname);
