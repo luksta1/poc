@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes as RouteContainer, Navigate, useLocation } from 'react-router-dom';
-import { Content, Nav } from './components';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Nav } from './components';
+import { Routes } from './routes';
 import './styles.css'
 
-const App = ({ onNavigate }) => {
-  const location = useLocation();
-
-  useEffect(() => {
-    onNavigate(location.pathname);
-  }, [location]);
-
+const App = ({ onNavigate = () => null }) => {
   return (
     <Router history={history}>
       <header>
         <Nav />
       </header>
       <main>
-        <RouteContainer>
-          <Route path="/app/echo/page-1" element={<Content pageId={1}/>} />
-          <Route path="/app/echo/page-2" element={<Content pageId={2}/>} />
-          <Route path="/app/echo/page-3" element={<Content pageId={3}/>} />
-          <Route path="/" element={<Navigate to="/app/echo/page-1" />} />
-        </RouteContainer>
+        <Routes onNavigate={onNavigate} />
       </main>
     </Router>
   );
