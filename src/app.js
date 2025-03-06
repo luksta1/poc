@@ -4,14 +4,14 @@ import { Nav } from './components';
 import { Routes } from './routes';
 import './styles.css'
 
-const App = ({ onNavigate = () => null, parentRoute = null }) => {
+const App = () => {
   return (
-    <Router>
+    <Router basename="/">
       <header>
         <Nav />
       </header>
       <main>
-        <Routes onNavigate={onNavigate} parentRoute={parentRoute} />
+        <Routes { ...window.xprops }/>
       </main>
     </Router>
   );

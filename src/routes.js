@@ -8,20 +8,21 @@ export const Routes = ({ onNavigate, parentLog, parentRoute }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    parentLog && parentLog(`${parentRoute}, ${location.pathname}`);
     if (parentRoute && location.pathname !== parentRoute) navigate(parentRoute);
   }, []);
 
-  // useEffect(() => {
-  //   if (location.pathname !== '/') onNavigate(location.pathname);
-  // }, [location]);
+  useEffect(() => {
+    const path = location.pathname;
+    if (path !== '/' && path !== parentRoute) onNavigate(location.pathname);
+  }, [location]);
 
   return (
     <RouteContainer>
+      <Route path="/app/echo" element={<Content pageId={1}/>} />
       <Route path="/app/echo/page-1" element={<Content pageId={1}/>} />
       <Route path="/app/echo/page-2" element={<Content pageId={2}/>} />
       <Route path="/app/echo/page-3" element={<Content pageId={3}/>} />
-      <Route path="*" element={<Navigate to="/app/echo/page-1" />} />
+      <Route path="/app/echo/*" element={<Navigate to="/app/echo/page-1" />} />
     </RouteContainer>
   )
 };
