@@ -6,7 +6,7 @@ import './styles.css'
 
 const App = ({ onNavigate = () => null, parentRoute = null }) => {
   return (
-    <Router history={history}>
+    <Router>
       <header>
         <Nav />
       </header>
