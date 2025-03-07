@@ -9,5 +9,5 @@ const root = createRoot(element);
 EchoInitializer();
 
 root.render(
-    <App />
+    <App { ...window.xprops } />
 );

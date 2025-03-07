@@ -4,14 +4,16 @@ import { Nav } from './components';
 import { Routes } from './routes';
 import './styles.css'
 
-const App = () => {
+const App = ({ hideNav, onNavigate, parentRoute, onProps }) => {
   return (
     <Router basename="/">
-      <header>
-        <Nav />
-      </header>
+      {!hideNav && (
+        <header>
+          <Nav />
+        </header>
+      )}
       <main>
-        <Routes { ...window.xprops }/>
+        <Routes hideNav={hideNav} onNavigate={onNavigate} parentRoute={parentRoute} onProps={onProps} />
       </main>
     </Router>
   );

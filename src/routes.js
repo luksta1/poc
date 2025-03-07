@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { Route, Routes as RouteContainer, Navigate, useLocation } from 'react-router-dom';
 import { Content } from './components';
 
-export const Routes = ({ onNavigate, parentLog, parentRoute }) => {
+export const Routes = ({ hideNav, onNavigate, parentRoute, onProps }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -13,8 +13,14 @@ export const Routes = ({ onNavigate, parentLog, parentRoute }) => {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path !== '/' && path !== parentRoute) onNavigate(location.pathname);
-  }, [location]);
+    if (!hideNav && path !== '/' && path !== parentRoute) onNavigate(location.pathname);
+  }, [hideNav, location]);
+
+  useEffect(() => {
+    onProps(({ hideNav, parentRoute }) => {
+      hideNav && navigate(parentRoute)
+    })
+  }, [])
 
   return (
     <RouteContainer>
